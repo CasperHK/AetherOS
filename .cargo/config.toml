@@ -1,0 +1,22 @@
+# ── AetherOS build configuration ────────────────────────────────────────────
+# Default target: RISC-V 64-bit bare metal
+#   riscv64gc = RV64I + M(mul) + A(atomic) + F(float) + D(double) + C(compressed)
+#   unknown-none-elf = no OS, ELF output format
+[build]
+target = "riscv64gc-unknown-none-elf"
+
+# ── RISC-V 64 target flags ───────────────────────────────────────────────────
+[target.riscv64gc-unknown-none-elf]
+rustflags = [
+    # Prevent the linker relaxation pass from rewriting symbol references
+    # in ways that break our linker-script-defined memory layout.
+    "-C", "link-arg=--no-relax",
+]
+
+# QEMU runner: `cargo run` will execute the ELF inside QEMU automatically.
+# QEMU flags:
+#   -machine virt      → generic RISC-V virtual board (has CLINT, UART, PLIC)
+#   -nographic         → redirect serial to stdout (no GUI)
+#   -bios none         → skip OpenSBI; jump straight to our kernel at 0x8000_0000
+#   -kernel <elf>      → load & run the ELF (appended automatically by cargo)
+runner = "qemu-system-riscv64 -machine virt -nographic -bios none -kernel"

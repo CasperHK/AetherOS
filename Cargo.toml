@@ -1,0 +1,29 @@
+[workspace]
+resolver = "2"
+members  = [
+    "kernel",
+    "compute",
+    "vault",
+    "common",
+]
+
+[workspace.package]
+version    = "0.1.0"
+edition    = "2021"
+authors    = ["AetherOS Contributors"]
+license    = "MIT OR Apache-2.0"
+repository = "https://github.com/CasperHK/AetherOS"
+keywords   = ["rtos", "embedded", "riscv", "kernel", "no-std"]
+
+# ────────────────────────────────────────────────────────────────
+# Release profile: optimise for size & safety on constrained hw
+# ────────────────────────────────────────────────────────────────
+[profile.release]
+opt-level     = "z"   # Minimise binary size (important for satellites)
+lto           = true  # Link-time optimisation for dead-code elimination
+codegen-units = 1     # Single codegen unit → maximum inlining & analysis
+panic         = "abort"
+
+[profile.dev]
+opt-level = 1         # Light optimisation even in dev for real-time paths
+panic     = "abort"   # No unwinding in bare-metal context

@@ -1,0 +1,11 @@
+[package]
+name        = "aether-common"
+version.workspace   = true
+edition.workspace   = true
+authors.workspace   = true
+license.workspace   = true
+description = "Shared types, constants and synchronisation primitives for AetherOS"
+
+# no extra deps – this crate must be usable in both no_std kernel and
+# std user-space tools (compute engine, vault sandbox).
+[dependencies]

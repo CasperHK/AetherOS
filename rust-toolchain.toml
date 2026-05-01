@@ -1,0 +1,8 @@
+[toolchain]
+# AetherOS requires nightly Rust for bare-metal kernel development.
+# Key nightly features used:
+#   - core::arch::global_asm  (stable 1.59+, kept here for cross-compat)
+#   - Various no_std / naked-function patterns
+channel  = "nightly"
+targets  = ["riscv64gc-unknown-none-elf"]
+components = ["rust-src", "rustfmt", "clippy", "llvm-tools"]

@@ -1,0 +1,10 @@
+[package]
+name        = "aether-vault"
+version.workspace   = true
+edition.workspace   = true
+authors.workspace   = true
+license.workspace   = true
+description = "AetherOS WebAssembly sandbox isolation layer (placeholder)"
+
+[dependencies]
+aether-common = { path = "../common" }

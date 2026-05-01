@@ -1,0 +1,14 @@
+[package]
+name        = "aether-kernel"
+version.workspace   = true
+edition.workspace   = true
+authors.workspace   = true
+license.workspace   = true
+description = "AetherOS real-time neural microkernel — RISC-V 64-bit bare metal"
+
+[[bin]]
+name = "aether-kernel"
+path = "src/main.rs"
+
+[dependencies]
+aether-common = { path = "../common" }

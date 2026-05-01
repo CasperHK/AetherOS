@@ -1,0 +1,24 @@
+# Rust build artifacts
+/target/
+**/*.rs.bk
+
+# Cargo lock is committed for reproducible builds
+# (uncomment below to exclude it)
+# Cargo.lock
+
+# Editor / IDE directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+
+# QEMU / binary artifacts
+*.elf
+*.bin
+*.hex
+*.map
